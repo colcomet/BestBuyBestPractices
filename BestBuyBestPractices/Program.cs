@@ -3,6 +3,7 @@ using System.Data;
 using System.IO;
 using MySql.Data.MySqlClient;
 using Microsoft.Extensions.Configuration;
+using System.ComponentModel;
 
 namespace BestBuyBestPractices
 {
@@ -17,17 +18,6 @@ namespace BestBuyBestPractices
 
             string connString = config.GetConnectionString("DefaultConnection");
             IDbConnection conn = new MySqlConnection(connString);
-            var repo = new DapperDepartmentRepository(conn);
-
-            //Console.WriteLine("Enter new department name");
-            //string newDept = Console.ReadLine();
-            //repo.InsertDepartment(newDept);
-
-            var depts = repo.GetAllDepartments();
-            foreach (var item in depts)
-            {
-                Console.WriteLine($"Department ID: {item.DepartmentID} Name: {item.Name}");
-            }
 
         }
     }
